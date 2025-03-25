@@ -70,7 +70,7 @@ pipeline {
         stage('Code Coverage') {
             steps {
                 echo 'Code coverage Measurement'
-                sh'mvn jacoco:report'
+                sh 'mvn jacoco:report'
                 // publication 
                 jacoco(
                     execPattern: 'target/jacoco.exec',
