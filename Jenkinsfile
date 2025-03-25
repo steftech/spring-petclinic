@@ -88,8 +88,11 @@ pipeline {
                         
                         # Copier le WAR avec un nom incluant la version
 						pwd
-						ls -lap target/
-                        cp target/spring-${APP_NAME}-${version}-${BUILD_NUMBER}.war ${ARTIFACTS_DIR}/${deployEnv}/${APP_NAME}-${version}-${BUILD_NUMBER}.war
+						echo "ls -laprt"
+						ls -laprt
+						echo "ls -laprt target/spring-${APP_NAME}*"
+						ls -laprt target/spring-${APP_NAME}*
+                        cp target/spring-${APP_NAME}-${version}-SNAPSHOT.war ${ARTIFACTS_DIR}/${deployEnv}/${APP_NAME}-${version}-${BUILD_NUMBER}.war
                         
                         # Créer un lien symbolique vers la dernière version
                         ln -sf ${ARTIFACTS_DIR}/${deployEnv}/${APP_NAME}-${version}-${BUILD_NUMBER}.war ${ARTIFACTS_DIR}/${deployEnv}/${APP_NAME}-latest.war
