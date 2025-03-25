@@ -79,7 +79,7 @@ pipeline {
                     sh "./scripts/deploy.sh ${params.DEPLOY_ENV} target/spring-${APP_NAME}*.war"
                     
                     // Archiver l'artefact avec version dans un répertoire centralisé
-                    def version = sh(script: "grep -m 1 '<version>' pom.xml | sed -E 's/.*<version>(.*)<\\/version>.*/\\1/'", returnStdout: true).trim()
+                    def version = "3.4.0-SNAPSHOT" #sh(script: "grep -m 1 '<version>' pom.xml | sed -E 's/.*<version>(.*)<\\/version>.*/\\1/'", returnStdout: true).trim()
                     def deployEnv = params.DEPLOY_ENV.toLowerCase()
                     
                     sh """
@@ -88,11 +88,12 @@ pipeline {
                         
                         # Copier le WAR avec un nom incluant la version
 						pwd
+						# spring-petclinic-3.4.0-SNAPSHOT.war
 						echo "ls -laprt"
 						ls -laprt
 						echo "ls -laprt target/spring-${APP_NAME}*"
 						ls -laprt target/spring-${APP_NAME}*
-                        cp target/spring-${APP_NAME}-${version}-SNAPSHOT.war ${ARTIFACTS_DIR}/${deployEnv}/${APP_NAME}-${version}-${BUILD_NUMBER}.war
+                        cp target/spring-${APP_NAME}-${version}.war ${ARTIFACTS_DIR}/${deployEnv}/${APP_NAME}-${version}-${BUILD_NUMBER}.war
                         
                         # Créer un lien symbolique vers la dernière version
                         ln -sf ${ARTIFACTS_DIR}/${deployEnv}/${APP_NAME}-${version}-${BUILD_NUMBER}.war ${ARTIFACTS_DIR}/${deployEnv}/${APP_NAME}-latest.war
