@@ -1,4 +1,3 @@
-// java
 package org.springframework.samples.petclinic;
  
 import org.springframework.boot.builder.SpringApplicationBuilder;
