@@ -43,7 +43,7 @@ fi
 
 # 2. Vérifier que la page d'accueil contient du contenu attendu
 echo "Vérification du contenu de la page d'accueil..."
-if curl -s "$TOMCAT_URL/$CONTEXT_PATH" | grep -q "PetClinic"; then
+if curl -s "$TOMCAT_URL/$CONTEXT_PATH/" | grep -q "PetClinic"; then
     echo "✅ Contenu de la page d'accueil vérifié"
 else
     echo "❌ Contenu de la page d'accueil incorrect"
