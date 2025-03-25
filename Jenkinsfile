@@ -87,6 +87,8 @@ pipeline {
                         mkdir -p ${ARTIFACTS_DIR}/${deployEnv}
                         
                         # Copier le WAR avec un nom incluant la version
+						pwd
+						ls -lap target/
                         cp target/spring-${APP_NAME}-${version}-${BUILD_NUMBER}.war ${ARTIFACTS_DIR}/${deployEnv}/${APP_NAME}-${version}-${BUILD_NUMBER}.war
                         
                         # Créer un lien symbolique vers la dernière version
