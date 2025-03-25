@@ -4,7 +4,7 @@
 		"https://checkstyle.org/dtds/configuration_1_2.dtd">
 <module name="com.puppycrawl.tools.checkstyle.Checker">
 	<module name="io.spring.nohttp.checkstyle.check.NoHttpCheck">
-		<property name="allowlist" value="^\Qhttp://192.168.\E$"/>
+		<property name="allowlist" value="^\Qhttp://192.168.56.13:8080\E$"/>
 	</module>
 	<module name="SuppressionFilter">
 		<property name="file" value="${config_loc}/nohttp-checkstyle-suppressions.xml"/>
