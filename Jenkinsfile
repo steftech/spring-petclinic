@@ -67,19 +67,21 @@ pipeline {
                 junit '**/target/surefire-reports/*.xml'
             }
         }
-//        stage('Code Coverage') {
-//            steps {
-//                echo 'Code coverage Measurement'
-//                sh 'mvn jacoco:report'
-//                // publication 
-//                jacoco(
-//                    execPattern: 'target/jacoco.exec',
-//                    classPattern: 'target/classes',
-//                    sourcePattern: 'src/main/java',
-//                    exclusionPattern: 'src/test/**'
-//                )
-//            }
-//        }
+        stage('Code Coverage') {
+            steps {
+                 withMaven(maven : 'localMaven'){
+                        echo 'Code coverage Measurement'
+                        sh 'mvn jacoco:report'
+                        // publication 
+                        jacoco(
+                            execPattern: 'target/jacoco.exec',
+                            classPattern: 'target/classes',
+                            sourcePattern: 'src/main/java',
+                            exclusionPattern: 'src/test/**'
+                        )
+                    }
+            }
+        }
         stage('Code Analysis') {
             steps {
                 // Exécution de Checkstyle
