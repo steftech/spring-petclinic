@@ -80,7 +80,6 @@ pipeline {
                     
                     // Archiver l'artefact avec version dans un répertoire centralisé
                     def version = "3.4.0-SNAPSHOT"
-					#sh(script: "grep -m 1 '<version>' pom.xml | sed -E 's/.*<version>(.*)<\\/version>.*/\\1/'", returnStdout: true).trim()
                     def deployEnv = params.DEPLOY_ENV.toLowerCase()
                     
                     sh """
