@@ -36,7 +36,11 @@ pipeline {
                 checkout scm
             }
         }
-        
+        stage('Formatte'){
+			steps{
+				sh "mvn spring-javaformat:apply"
+			}
+		}
         stage('Build') {
             steps {
                 // Construction du projet avec le profil spécifique à l'environnement
